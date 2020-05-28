@@ -30,8 +30,8 @@ function init(){
 }
 
 function start(board){
-	var pieceNumber = Math.random() * 4;
-	var piece = setPiece(Math.round(pieceNumber) + 1);//1, 2, 3, 4
+	var pieceNumber = Math.random() * 7;
+	var piece = setPiece(Math.round(pieceNumber) + 1);//1, 2, 3, 4, 5, 6, 7
 }
 
 function end(){
@@ -39,7 +39,29 @@ function end(){
 }
 
 function setBoard(){
-	//10x20
+	/* board(10x20)
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+	*/
+
 	var board = new Array(10);
 	for(var i in board.length){
 		board[i] = new Array(20);
@@ -50,23 +72,39 @@ function setBoard(){
 function setPiece(number){
 	/* shape
 	1. ㅁㅁㅁㅁ
-	2. ㅁㅁㅁ
-		 ㅁ
-	3. ㅁㅁㅁ
-		  ㅁ
+
+	2. 	ㅁ
+		ㅁㅁ
+		ㅁ
+
+	3.	ㅁㅁ
+		ㅁ
+		ㅁ
+
 	4. ㅁㅁ
+		 ㅁ
+		 ㅁ
+
+	5.  ㅁ
+		ㅁㅁ
+		  ㅁ
+
+	6.	  ㅁ
+		ㅁㅁ
+		ㅁ
+
+	7. ㅁㅁ
 	   ㅁㅁ
 	*/
-	/* state
-	1. 원래 모양
-	2. 시계방향으로 90도 회전
-	3. 시계방향으로 180도 회전
-	4. 시계방향으로 270도 회전
-	*/
+
 	var piece = {
-		shape : 0,
-		state : 0,
-		location : [0,0];
+		one 	: { [3,0], [4,0], [5,0], [6,0] },
+		two 	: { [4,0], [4,1], [4,2], [5,1] },
+		three 	: { [4,0], [4,1], [4,2], [5,0] },
+		four 	: { [4,0], [5,0], [5,1], [5,2] },
+		five 	: { [4,0], [4,1], [5,0], [5,1] },
+		six 	: { [4,1], [4,2], [5,0], [5,1] },
+		seven 	: { [4,0], [4,1], [5,0], [5,1] }
 	}
 	return '';
 }
@@ -85,7 +123,7 @@ function movePiece(pointer){
 		this.location[1] + 1;
 
 	} else if(pointer == 0){//space
-
+		setScore();
 	}
 	return location;
 }
@@ -94,3 +132,6 @@ function turnPiece(){
 	//
 }
 
+function setScore(){
+
+}
